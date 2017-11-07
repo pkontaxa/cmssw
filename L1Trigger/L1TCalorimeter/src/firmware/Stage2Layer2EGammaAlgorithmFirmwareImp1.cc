@@ -74,6 +74,18 @@ void l1t::Stage2Layer2EGammaAlgorithmFirmwareImp1::processEvent(const std::vecto
       //
 
       int seedEt    = seed   .hwPt();
+      
+      ///////// Pantelis //////////////
+      int seedEm    = seed.hwEtEm();
+      cout<<"seedEm: "<<seedEm<<endl;
+      int seedHad   = seed.hwEtHad();
+      cout<<"seedHad: "<<seedHad<<endl;
+      ////////////////////////////////
+
+      //short int seedEt2=seedEt;      
+      
+      cout<< "seedEt: "<<seedEt<<endl;
+
       int towerEtNW = towerNW.hwPt();
       int towerEtN  = towerN .hwPt();
       int towerEtNE = towerNE.hwPt();
@@ -94,6 +106,8 @@ void l1t::Stage2Layer2EGammaAlgorithmFirmwareImp1::processEvent(const std::vecto
 
       // Trim cluster (only for egamma energy computation, the original cluster is unchanged)
       l1t::CaloCluster clusterTrim = trimCluster(cluster);
+
+      
 
       // Recompute hw energy (of the trimmed cluster) from towers
       egamma.setHwPt(seedEt);
@@ -172,6 +186,15 @@ void l1t::Stage2Layer2EGammaAlgorithmFirmwareImp1::processEvent(const std::vecto
       egamma.setNTT((short int)nrTowers);
       egamma.setShape((short int)returnShape(cluster));
       egamma.setTowerHoE((short int)returnHoE(seed));      
+      
+      ///////////////// Pantelis ////////////////////////
+      int seedEt2=seedEt;
+      int seedHad2=seedHad;
+      //cout<<"seedEt2: "<<seedEt2<<endl;
+      egamma.setSeedTowerEt((short int)seedEt2);
+      egamma.setSeedTowerEm((short int)seedEm);
+      egamma.setSeedTowerHad((short int)seedHad2);
+      //////////////////////////////////////////////////
       
       // Energy calibration
       // Corrections function of ieta, ET, and cluster shape
@@ -503,7 +526,7 @@ unsigned int l1t::Stage2Layer2EGammaAlgorithmFirmwareImp1::trimmingLutIndex(unsi
 unsigned int l1t::Stage2Layer2EGammaAlgorithmFirmwareImp1::returnShape(const l1t::CaloCluster& clus)
 /*****************************************************************/
 {
-  const l1t::CaloCluster& clusCopy = clus;
+  l1t::CaloCluster clusCopy = clus;
 
   unsigned int shape = 0;
   if( (clus.checkClusterFlag(CaloCluster::INCLUDE_N)) ) shape |= (0x1);
