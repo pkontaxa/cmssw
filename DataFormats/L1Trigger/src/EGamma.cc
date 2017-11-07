@@ -11,6 +11,11 @@ void EGamma::clear_extended(){
   nTT_ = 0;
   shape_ = 0;
   towerHoE_ = 0;
+  ////// Pantelis ////////////
+  seedTowerEt_ = 0; 
+  seedTowerEm_ = 0;
+  seedTowerHad_ = 0;
+  ///////////////////////////
 }
 
 EGamma::EGamma( const LorentzVector& p4,
@@ -72,6 +77,21 @@ void EGamma::setTowerHoE(short int HoE) {
   towerHoE_ = HoE;
 }
 
+////////// Pantelis ///////////////////
+void EGamma::setSeedTowerEt(short int seedEt) {
+     seedTowerEt_ = seedEt;
+}
+
+void EGamma::setSeedTowerEm(short int seedEm) {
+      seedTowerEm_ = seedEm;
+}
+
+void EGamma::setSeedTowerHad(short int seedHad) {
+     seedTowerHad_ = seedHad;
+}
+
+//////////////////////////////////////
+
 short int EGamma::towerIEta() const {
   return towerIEta_;
 }
@@ -103,3 +123,17 @@ short int EGamma::shape() const {
 short int EGamma::towerHoE() const {
   return towerHoE_;
 }
+/////////////// Pantelis ////////////////
+short int EGamma::seedTowerEt() const {
+  return seedTowerEt_;
+}
+
+short int EGamma::seedTowerEm() const{
+  return seedTowerEm_;
+}
+
+short int EGamma::seedTowerHad() const{
+  return seedTowerHad_;
+}
+
+////////////////////////////////////////   
