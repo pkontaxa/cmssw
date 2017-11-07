@@ -307,6 +307,12 @@ l1t::EGamma l1t::CaloTools::egP4Demux(l1t::EGamma& eg) {
  tmpEG.setShape(eg.shape());
  tmpEG.setTowerHoE(eg.towerHoE());
 
+//////// Pantelis /////////////////////
+ tmpEG.setSeedTowerEt(eg.seedTowerEt());
+ tmpEG.setSeedTowerEm(eg.seedTowerEm());
+ tmpEG.setSeedTowerHad(eg.seedTowerHad());
+//////////////////////////////////////
+
  return tmpEG;
 
 }
@@ -394,7 +400,9 @@ l1t::EGamma l1t::CaloTools::egP4MP(l1t::EGamma& eg) {
   tmpEG.setFootprintEt(eg.footprintEt());
   tmpEG.setNTT(eg.nTT());
   tmpEG.setShape(eg.shape());
-  
+ 
+ // tmpEG.setSeedTowerHad(eg.seedTowerHad());
+ 
   return tmpEG;
 
 }
