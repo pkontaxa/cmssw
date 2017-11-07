@@ -36,7 +36,7 @@ namespace l1t {
 	    int qual=0,
 	    int iso=0);
 
-    ~EGamma() override;
+    ~EGamma();
 
     void setTowerIEta(short int ieta);  // ieta of seed tower
     void setTowerIPhi(short int iphi);  // iphi of seed tower
@@ -46,6 +46,9 @@ namespace l1t {
     void setNTT(short int ntt);         // n towers above threshold
     void setShape(short int s);         // cluster shape variable
     void setTowerHoE(short int HoE);         // H/E as computed in Layer-1
+    void setSeedTowerEt(short int seedEt);    
+    void setSeedTowerEm(short int seedEm);
+    void setSeedTowerHad(short int seedHad);    
 
     short int towerIEta() const;
     short int towerIPhi() const;
@@ -55,6 +58,18 @@ namespace l1t {
     short int nTT() const;
     short int shape() const;
     short int towerHoE() const;
+    
+    //////////////// Pantelis //////////////
+//    void setSeedTowerEt(short int seedEt);
+    short int seedTowerEt() const;
+
+  //  void setSeedTowerEm(short int seedEm);
+    short int seedTowerEm() const;
+
+//    void setSeedTowerHad(short int seedHad);
+    short int seedTowerHad() const;
+
+    ////////////////////////////////////////
 
   private:
 
@@ -68,6 +83,12 @@ namespace l1t {
     short int nTT_;
     short int shape_;
     short int towerHoE_;
+
+    //////////////// Pantelis ////////////////
+    short int seedTowerEt_;
+    short int seedTowerEm_;
+    short int seedTowerHad_;
+    //////////////////////////////////////////   
 
   };
 
